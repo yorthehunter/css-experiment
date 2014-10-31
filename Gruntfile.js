@@ -65,7 +65,27 @@ module.exports = function (grunt) {
           '.tmp/styles/{,*/}*.css',
           '<%= config.app %>/images/{,*/}*'
         ]
-      }
+      },
+        buildcontrol: {
+          options: {
+            dir: 'dist',
+            commit: true,
+            push: true,
+            message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
+          },
+          pages: {
+            options: {
+              remote: 'git@github.com:yorthehunter/css-experiment.git',
+              branch: 'gh-pages'
+            }
+          },
+          local: {
+            options: {
+              remote: '../',
+              branch: 'source'
+            }
+          }
+        }
     },
 
     // The actual grunt server settings
