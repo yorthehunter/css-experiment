@@ -1,0 +1,76 @@
+[grid] {
+  list-style:     none;
+  margin-left:   -$grid-gutter;
+  padding:        0;
+  font-size:      0;
+}
+
+[g] {
+  display:        inline-block;    
+  padding-left:   $grid-gutter;    
+  vertical-align: top;             
+  width:          100%;            
+  font-size:      $font-size-base;
+
+  @if $grid-debug {
+    background-color: rgba(yellow,0.25) !important;
+
+    &:nth-child(odd) {
+      background-color:  rgba(red,0.25) !important;
+    }
+  }
+}
+
+@each $breakpoint in "xl", "lg", "md", "sm", "xs" {
+  @if $breakpoint == "xs" {
+    $breakpoint-shorthand: "xs" !global;
+  } @else {
+    $breakpoint-shorthand: "lt#{$breakpoint}" !global;
+  }
+
+  @include at_breakpoint(#{$breakpoint-shorthand}) {
+    @for $i from 1 through $max-columns {
+      @for $j from $i through $max-columns {
+        $fraction: $i / $j;
+        [g~="#{$i}/#{$j}-#{$breakpoint}"] {
+          width: $fraction * 100%;
+        }
+      }
+    }
+  }
+}
+
+[grid~="reverse"] {
+  direction: rtl;
+  text-align: left;
+
+  > [g] {
+    direction: ltr;
+    text-align: left;
+  }
+}
+
+[grid~="center"] {
+  text-align: center;
+
+  > [g] {
+    text-align: left;
+  }
+}
+
+[grid~="right"] {
+  text-align: right;
+
+  > [g] {
+    text-align: left;
+    margin-right: 0;
+  }
+}
+
+[grid~="nopad"] {
+  margin-left: 0;
+
+  > [g] {
+    padding-left: 0;
+  }
+}

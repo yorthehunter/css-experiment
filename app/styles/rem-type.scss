@@ -1,0 +1,15 @@
+html {
+  font-size: $font-size-base;
+  line-height: 1rem;
+}
+
+$type-ratio: 1.33;
+
+@for $h from 1 through 6 {
+  h#{$h} {
+    $value: $type-ratio;
+    @for $i from 1 through  $h { $value: $value * $type-ratio }
+    font-size: #{$value}rem;
+    line-height: #{ceil($value)}rem;
+  }
+}
