@@ -43,27 +43,38 @@ $round-xs: $xs;
   [rounded~="sm"] { border-radius: $round-sm; }
   [rounded~="xs"] { border-radius: $round-xs; }
 
-  [rounded~="top"]    {  border-bottom-left-radius: none; border-bottom-right-radius: none; }
-  [rounded~="bottom"] {     border-top-left-radius: none;    border-top-right-radius: none; }
-  [rounded~="left"]   {  border-bottom-left-radius: none;     border-top-left-radius: none; }
-  [rounded~="right"]  { border-bottom-right-radius: none; border-bottom-right-radius: none; }
+  [rounded~="top"]    {  border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+  [rounded~="bottom"] {     border-top-left-radius: 0;    border-top-right-radius: 0; }
+  [rounded~="left"]   { border-bottom-right-radius: 0;    border-top-right-radius: 0; }
+  [rounded~="right"]  {  border-bottom-left-radius: 0;     border-top-left-radius: 0; }
 
-$shadow-base: 0 3px 6px;
+$shadow-attr:  0 1px 4px;
+$shadow-big:   0 3px 6px;
+$shadow-dark:  rgba(0, 0, 0, 0.40);
+$shadow-base:  rgba(0, 0, 0, 0.25);
+$shadow-light: rgba(0, 0, 0, 0.10);
+$shadow-white: rgba(255, 255, 255, 0.3);
 
 [shadowed] { }
+  [shadowed],
   [shadowed~="base"] {
-    -webkit-box-shadow: $shadow-base rgba(0, 0, 0, 0.25);
-       -moz-box-shadow: $shadow-base rgba(0, 0, 0, 0.25);
-            box-shadow: $shadow-base rgba(0, 0, 0, 0.25); }
+    -webkit-box-shadow: $shadow-attr $shadow-base;
+       -moz-box-shadow: $shadow-attr $shadow-base;
+            box-shadow: $shadow-attr $shadow-base; }
   [shadowed~="dark"] {
-    -webkit-box-shadow: $shadow-base rgba(0, 0, 0, 0.4);
-       -moz-box-shadow: $shadow-base rgba(0, 0, 0, 0.4);
-            box-shadow: $shadow-base rgba(0, 0, 0, 0.4); }
+    -webkit-box-shadow: $shadow-attr $shadow-dark;
+       -moz-box-shadow: $shadow-attr $shadow-dark;
+            box-shadow: $shadow-attr $shadow-dark; }
   [shadowed~="light"] {
-    -webkit-box-shadow: $shadow-base rgba(0, 0, 0, 0.1);
-       -moz-box-shadow: $shadow-base rgba(0, 0, 0, 0.1);
-            box-shadow: $shadow-base rgba(0, 0, 0, 0.1); }
+    -webkit-box-shadow: $shadow-attr $shadow-light;
+       -moz-box-shadow: $shadow-attr $shadow-light;
+            box-shadow: $shadow-attr $shadow-light; }
   [shadowed~="white"] {
-    -webkit-box-shadow: $shadow-base rgba(255, 255, 255, 0.3);
-       -moz-box-shadow: $shadow-base rgba(255, 255, 255, 0.3);
-            box-shadow: $shadow-base rgba(255, 255, 255, 0.3); }
+    -webkit-box-shadow: $shadow-attr $shadow-white;
+       -moz-box-shadow: $shadow-attr $shadow-white;
+            box-shadow: $shadow-attr $shadow-white; }
+  [shadowed~="big"] {
+    -webkit-box-shadow: $shadow-big $shadow-base;
+       -moz-box-shadow: $shadow-big $shadow-base;
+            box-shadow: $shadow-big $shadow-base;
+  }

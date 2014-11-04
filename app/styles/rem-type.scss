@@ -6,7 +6,7 @@ html {
 $type-ratio: 1.33;
 
 @for $h from 1 through 6 {
-  h#{$h} {
+  h#{abs(7 - $h)} {
     $value: $type-ratio;
     @for $i from 1 through  $h { $value: $value * $type-ratio }
     font-size: #{$value}rem;
